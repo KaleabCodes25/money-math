@@ -3,31 +3,32 @@ package com.pluralsight;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.math.BigDecimal;
 
+import static java.lang.Double.compare;
+
 public class Main {
     public static void main(String[] args) {
-        float first = 0f;
-        float value = 0.10f;
+        float first = 0.0f;
 
-        double second = 0;
-        double secondValue = 0.10;
+
+        double second = 0.0;
+
 
         BigDecimal third = BigDecimal.ZERO;
-        BigDecimal tenthValue = new BigDecimal("0.10");
-
+        BigDecimal tenCents = new BigDecimal("0.10");
 
         for (int i = 0; i < 10; i++) {
-            first += value;
-            System.out.println();
-            second += secondValue;
-            System.out.println();
-            third = third.add(tenthValue);
-            System.out.println();
+            first += 0.10f;
+
+            second += 0.10;
+
+            third = third.add(tenCents);
+
             System.out.println( "float " + first);
-            System.out.println();
+
             System.out.println("double " + second);
-            System.out.println();
+
             System.out.println("bigDecimal " + third);
-            System.out.println();
+
         }
         first = 0f;
         System.out.println("First after the loop: " + first);
@@ -39,11 +40,11 @@ public class Main {
         System.out.println("Third after the loop: " + third);
 
         for (int i = 0; i < 1000; i++) {
-            first += value + 19.99f;
+            first +=  19.99f;
             System.out.println();
-            second += secondValue + 19.99;
+            second +=  19.99;
             System.out.println();
-            third = third.add(tenthValue).add(new BigDecimal("19.99"));
+            third = third.add(new BigDecimal("19.99"));
             System.out.println();
 
         }
@@ -54,6 +55,10 @@ public class Main {
         System.out.println("bigDecimal " + third);
         System.out.println();
 
+        System.out.println(first == second);
+        BigDecimal secondAsBigDecimal = BigDecimal.valueOf(second);
+
+        System.out.println(third.compareTo(secondAsBigDecimal) == 0);
 
     }
 }
